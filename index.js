@@ -56,10 +56,10 @@ function signIn() {
   onSuccess: onSignIn
 });
 }
-/* function onSignIn(googleUser) {
+function onSignIn(googleUser) {
   var id_token = googleUser.getAuthResponse().id_token;
   // Send the ID token to your server to authenticate the user
-} */
+}
 
 function setupButtons() {
   const toggleButton = document.querySelector("#toggle-btn");
@@ -160,7 +160,7 @@ function smoothMarkers() {
 function getCoordinateInRange(a, b, f, deveui) {
   //console.log(deveui, "used in spherical");
   // Calculate the distance between the two coordinates
-  const distance = google.maps.geometry.spherical.computeDistanceBetween(a, b);
+  //const distance = google.maps.geometry.spherical.computeDistanceBetween(a, b);
   // Calculate the coordinates for the given fraction of distance
   const latLng = google.maps.geometry.spherical.interpolate(a, b, f);
   markers[deveui].setPosition(latLng);
