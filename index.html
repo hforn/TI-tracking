@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Cattle Tracking - Tapped Industries</title>
+    <link rel="icon" href="icon.webp" type="image/x-icon" />
+    <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script
+      src="https://polyfill.io/v3/polyfill.min.js?features=default"
+      defer
+    ></script>
+
+    <script src="index.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2uU1KT7eovzmg6gaBkCakpJOq_pijgVg&libraries=geometry,visualization,drawing&callback=initMap"
+    ></script>
+  </head>
+  <body>
+    <script src="https://apis.google.com/js/platform.js"></script>
+
+<!-- Add the Google Sign-In button -->
+<div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+<script>
+  // Load the auth2 module and initialize the Google Sign-In button
+  gapi.load('auth2', function() {
+    gapi.auth2.init({
+      client_id: '910856571495-9eb3c62kikfb9p5dgnfl4lc7f8oo66fh.apps.googleusercontent.com'
+    }).then(function() {
+      // Attach the onSignIn callback function to the Google Sign-In button
+      gapi.signin2.render('g-signin2', {
+        'onsuccess': onSignIn
+      });
+    });
+  });
+
+  // Define the onSignIn callback function
+  function onSignIn(googleUser) {
+    // Get the user's Google ID token and other information
+    var id_token = googleUser.getAuthResponse().id_token;
+    var profile = googleUser.getBasicProfile();
+    
+    // Use the ID token to authenticate with your server or perform other actions
+    // ...
+  }
+</script>
+    <div id="menu-container">
+      <h3 id="listHeading">Cattle List</h3>
+      <div id="cattle-list-container">
+        <ul id="cattle-list"></ul>
+        
+      </div>
+      <div id="button-container">
+        <button id="toggle-heatmap">Toggle Heatmap</button>
+        <button id="create-zone">Create a Zone</button>
+        <button id="save-zone">Save Zone</button>
+        <button id="delete-zone">Delete Zone</button>
+      </div>
+    </div>
+    <div id="slider-container">
+      <!-- <button onclick="signIn()">Sign In</button> -->
+      <label for="toggle-btn" class="switch">
+        <input type="checkbox" id="toggle-btn" />
+        <span class="slider round"></span>
+        Disable Animated History
+      </label>
+    </div>
+    <div id="map"></div>
+    <div id="clock"></div>
+  </body>
+</html>
