@@ -52,12 +52,13 @@ getSheetData()
 function signIn() {
   gapi.auth2.getAuthInstance().signIn();
   gapi.auth2.init({
-  client_id: '910856571495-9eb3c62kikfb9p5dgnfl4lc7f8oo66fh.apps.googleusercontent.com',
+  client_id: '910856571495-mausloaug88d7vcf41tiptg705nbhrkl.apps.googleusercontent.com',
   onSuccess: onSignIn
 });
 }
 function onSignIn(googleUser) {
   var id_token = googleUser.getAuthResponse().id_token;
+  console.log("SIGNED IN");
   // Send the ID token to your server to authenticate the user
 }
 
