@@ -5,6 +5,8 @@ const qu = "Select A,C,D,E,F OFFSET 295"; //select collumns from google sheet(* 
 const query = encodeURIComponent(qu);
 const url = `${base}&sheet=${sheetName}&tq=${query}`;
 
+const CLIENT_ID = '910856571495-mausloaug88d7vcf41tiptg705nbhrkl.apps.googleusercontent.com';
+
 const output = document.querySelector(".output");
 const div = document.createElement("div");
 
@@ -48,19 +50,10 @@ getSheetData()
     cattleListWindow();
     initHeatMap();
   })
-  .then(() => {});
-function signIn() {
-  gapi.auth2.getAuthInstance().signIn();
-  gapi.auth2.init({
-  client_id: '910856571495-mausloaug88d7vcf41tiptg705nbhrkl.apps.googleusercontent.com',
-  onSuccess: onSignIn
-});
-}
-function onSignIn(googleUser) {
-  var id_token = googleUser.getAuthResponse().id_token;
-  console.log("SIGNED IN");
-  // Send the ID token to your server to authenticate the user
-}
+  .then(() => {
+    
+  });
+
 
 function setupButtons() {
   const toggleButton = document.querySelector("#toggle-btn");

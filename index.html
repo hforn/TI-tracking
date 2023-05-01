@@ -2,6 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://accounts.google.com https://apis.google.com https://code.jquery.com https://polyfill.io https://maps.googleapis.com 'unsafe-inline'">
+    <meta name="referrer" content="no-referrer-when-downgrade" />
     <title>Cattle Tracking - Tapped Industries</title>
     <link rel="icon" href="icon.webp" type="image/x-icon" />
     <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
@@ -26,39 +28,18 @@
     ></script>
   </head>
   <body>
-    <script src="https://apis.google.com/js/platform.js"></script>
-
-<!-- Add the Google Sign-In button -->
-<div class="g-signin2" data-onsuccess="onSignIn"></div>
-
-<script>
-  // Load the auth2 module and initialize the Google Sign-In button
-  gapi.load('auth2', function() {
-    gapi.auth2.init({
-      client_id: '910856571495-mausloaug88d7vcf41tiptg705nbhrkl.apps.googleusercontent.com'
-    }).then(function() {
-      // Attach the onSignIn callback function to the Google Sign-In button
-      gapi.signin2.render('g-signin2', {
-        'onsuccess': onSignIn
-      });
-    });
-  });
-
-  // Define the onSignIn callback function
-  function onSignIn(googleUser) {
-    // Get the user's Google ID token and other information
-    var id_token = googleUser.getAuthResponse().id_token;
-    var profile = googleUser.getBasicProfile();
-    
-    // Use the ID token to authenticate with your server or perform other actions
-    // ...
-  }
-</script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <div
+      id="g_id_onload"
+      data-client_id="910856571495-mausloaug88d7vcf41tiptg705nbhrkl.apps.googleusercontent.com"
+      data-ux_mode="redirect"
+      data-login_uri="https://www.example.com/your_login_endpoint"
+    ></div>
+    <div class="g_id_signin" data-type="standard"></div>
     <div id="menu-container">
       <h3 id="listHeading">Cattle List</h3>
       <div id="cattle-list-container">
         <ul id="cattle-list"></ul>
-        
       </div>
       <div id="button-container">
         <button id="toggle-heatmap">Toggle Heatmap</button>
