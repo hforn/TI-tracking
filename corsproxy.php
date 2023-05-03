@@ -18,9 +18,9 @@ $request_data = json_decode(file_get_contents('php://input'));
 
 // Send the request to the target URL
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, $request_data->url);
+curl_setopt($ch, CURLOPT_URL, $request_data->login_hint);
 curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $request_data->data);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($request_data));
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $response = curl_exec($ch);
 curl_close($ch);
@@ -29,6 +29,6 @@ curl_close($ch);
 echo $response;
 
 // Validate and store the One Tap Sign-in token
-$token = json_decode(file_get_contents('php://input'))->credential;
+$token = json_decode(file_get_contents('php://input'));
 // TODO: Validate the token and store it in a session or database
 ?>
