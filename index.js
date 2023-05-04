@@ -542,7 +542,7 @@ function setupTimeSlider() {
   const slider = document.createElement("input");
   slider.className = "actual-slider";
   slider.type = "range";
-  slider.min = oldestTimestamp;/*newestTimeStamp - 10080;*/ //previous x minutes (10080 = 7days)
+  slider.min = oldestTimeStamp;/*newestTimeStamp - 10080;*/ //previous x minutes (10080 = 7days)
   slider.max = newestTimeStamp;
   //console.log("newest timestamp: ", newestTimeStamp);
   slider.value = slider.max;
